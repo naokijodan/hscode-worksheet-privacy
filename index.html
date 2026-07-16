@@ -17,7 +17,7 @@
 </head>
 <body>
   <h1>プライバシーポリシー — HSコードワークシート作成君</h1>
-  <p class="meta">対象: Chrome 拡張機能「HSコードワークシート作成君」<br />最終更新日: 2026年7月10日</p>
+  <p class="meta">対象: Chrome 拡張機能「HSコードワークシート作成君」<br />最終更新日: 2026年7月16日</p>
 
   <div class="highlight">
     本拡張機能は、<strong>AI機能を使用しない場合</strong>、利用者のデータを一切収集・保存・送信しません。すべての処理はブラウザ内（オフライン）で完結します。<br />
@@ -39,8 +39,15 @@
   <p>ただし、以下の場合に限り外部との通信が発生します。</p>
   <ul>
     <li>利用者が「公式HTSで確認」または「CBP判例(CROSS)で検索」ボタンを押した場合：米国USITC・CBPの公式サイトを新しいタブで開きます（本拡張機能が情報を送信するものではありません）。</li>
-    <li><strong>AI機能を使用する場合（v1.2.0より）</strong>：利用者がAIボタンをクリックした際、表示中の商品ページの商品名・説明文・ブランド名を、OpenAI社のAPI（api.openai.com）に送信し、通関用タイトルおよびHTSUSコードの候補を取得します。この通信はAIボタンを押した時のみ発生します。送信内容はOpenAI社の<a href="https://openai.com/ja/policies/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a>に従って処理されます。</li>
+    <li><strong>AI機能を使用する場合（v1.2.0より）</strong>：以下の機能で利用者がAIボタンをクリックした際、表示中の商品ページの情報を、OpenAI社のAPI（api.openai.com）に送信します。この通信はAIボタンを押した時のみ発生します。送信内容はOpenAI社の<a href="https://openai.com/ja/policies/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a>に従って処理されます。
+      <ul>
+        <li><strong>HTSUSコード判定機能（v1.2.0）</strong>：商品ページのURL・商品名・ブランド・商品の状態(condition)・カテゴリ・説明文を送信し、通関用タイトルおよびHTSUSコードの候補を取得します。</li>
+        <li><strong>TSCA証明書作成機能（v1.3.0）</strong>：商品ページのURL・商品名・ブランド・商品の状態(condition)・カテゴリ・説明文を送信し、TSCA該当性の判定候補を取得します。</li>
+        <li><strong>Watch Worksheet作成機能（v1.4.0）</strong>：商品ページのURL・商品名・ブランド・商品の状態(condition)・カテゴリ・説明文に加え、<strong>価格・通貨</strong>を送信し、ワークシート項目の候補を取得します。</li>
+      </ul>
+    </li>
   </ul>
+  <p>なお、利用者が入力した会社情報・Certifier（証明者）情報・配送伝票番号（AWB）は、いずれもAIには送信されません。これらは書類のPDF生成・印刷時にのみ、利用者の端末内で使用されます。</p>
 
   <h2>3. 端末内での一時保存</h2>
   <p>本拡張機能は <code>storage</code> 権限を使用して、入力中の内容（商品情報等）を利用者の端末内に一時保存します。
@@ -51,7 +58,7 @@
   <ul>
     <li><strong>storage</strong>: 入力内容・会社情報・OpenAI APIキーの端末内への保存および復元のためにのみ使用します。</li>
     <li><strong>sidePanel</strong>: ワークシート画面をブラウザのサイドパネルに表示するためにのみ使用します。</li>
-    <li><strong>activeTab / scripting / tabs</strong>（v1.2.0より）: AI機能使用時に、利用者が操作中の商品ページから商品名・説明文・ブランド名を取得するためにのみ使用します。バックグラウンドでの収集は行いません。</li>
+    <li><strong>activeTab / scripting / tabs</strong>（v1.2.0より）: AI機能使用時に、利用者が操作中の商品ページからURL・商品名・ブランド・商品の状態(condition)・カテゴリ・説明文を取得するためにのみ使用します。TSCA証明書作成機能（v1.3.0）・Watch Worksheet作成機能（v1.4.0）でも同様に商品ページの情報を取得し、Watch Worksheet作成機能では価格・通貨も取得します。バックグラウンドでの収集は行いません。</li>
     <li><strong>全サイトへのアクセス権限</strong>（v1.2.0より）: 利用者はメルカリ・ヤフオク・Hard Offなど様々なサイトの商品ページでAI機能を利用します。特定のサイトに限定せずご利用いただけるよう、幅広いアクセス権限を使用しています。取得するのは商品情報のみであり、個人情報・閲覧履歴・Cookieは収集しません。</li>
   </ul>
   <p>クリップボードへのアクセス（clipboardWrite 等）は使用しません。</p>
